@@ -1,0 +1,14 @@
+var pageHeight = document.body.scrollHeight;
+var scrollSpeed = 50;
+var scrollDirection = 1;
+function autoScroll() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (scrollTop + window.innerHeight >= pageHeight && scrollDirection === 1) {
+        scrollDirection = -1;
+    }
+    else if (scrollTop <= 0 && scrollDirection === -1) {
+        scrollDirection = 1;
+    }
+    window.scrollBy(0, scrollSpeed * scrollDirection);
+}
+var interval = setInterval(autoScroll, 1000);
